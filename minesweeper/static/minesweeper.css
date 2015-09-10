@@ -1,0 +1,26 @@
+td {
+  z-index:2;
+  float:left;
+  margin-left:2px;
+  background-color: #706080;
+  cursor:pointer;
+  color: #FFFFFF;
+  width:20px;
+  height:20px;
+  font-family: FontAwesome;
+  display:block;
+  text-align:center;
+}
+td:hover {
+  background-color: #303335;
+}
+td.flag:before {
+  content: "\f024";
+}
+td.mine:before {
+  content: "\f1e2";
+}
+td.revealed {
+  pointer-events: none;
+  background-color: #C0B0D0;
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="${request.locale_name}">
+  <head>
+    
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="${request.static_url('minesweeper:static/minesweeper.js')}"></script>
+    <link rel="stylesheet" href="${request.static_url('minesweeper:static/minesweeper.css')}">
+    <script>
+      var MINES = ${MINES}, BOARD_WIDTH = ${BOARD_WIDTH}, BOARD_HEIGHT = ${BOARD_HEIGHT}
+    </script>
+  </head>
+  <body>
+    <h1>MineSweeper</h1>
+    <h4>Width: ${BOARD_WIDTH}</h4>
+    <h4>Height: ${BOARD_HEIGHT}</h4>
+    <h4>Mines: ${MINES}</h4>
+    <button id="restart">Restart Game</button>
+<table>       
+  <tr tal:repeat="row range(BOARD_WIDTH)">        
+    <td tal:repeat="col range(BOARD_HEIGHT)" tal:attributes="data-x row; data-y col"></td>       
+  </tr>
+</table>
+
+  </body>
+
+</html>
