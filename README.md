@@ -6,6 +6,7 @@ Minesweeper
 
 [Video demo (sorry, screen capture didn't capture the cursor)](http://streamable.com/mlsu)
 
+[Live Demo](http://intense-gorge-2755.herokuapp.com)
 
 `git clone`
 
