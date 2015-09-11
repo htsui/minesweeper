@@ -14,11 +14,11 @@ table.minesweeper td {
   height:20px;
   display:block;
   text-align:center;
-  transition: all 0.25s;
+  transition: background-color 0.25s;
 }
 table.minesweeper td:hover {
   background-color: #D0C0E0;
-  transition: all 0.1s;
+  transition: background-color 0.1s;
 }
 table.minesweeper td.flag:before {
   font-family: FontAwesome;
@@ -38,17 +38,22 @@ body{
   font-family: 'Roboto', sans-serif;
 }
 
-button.restart{
+.restart{
   color: #6496c8;
   border-radius:2px;
   background: rgba(0,0,0,0);
   border: solid 5px #6496c8;
+  transition: all 0.2s;
 }
-button.restart:hover{
+.restart:hover{
+  cursor:pointer;
   border-color: #346392;
   color: #346392;
 }
-button.restart:active{
+.restart:active{
   border-color: #27496d;
   color: #27496d;
+}
+.red{
+  color:#FF0000;
 }

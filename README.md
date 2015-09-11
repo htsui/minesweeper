@@ -1,4 +1,9 @@
-Minesweeper!
+Minesweeper
+
+-Multiplayer
+
+-Seperate Rooms
+
 
 `git clone`
 

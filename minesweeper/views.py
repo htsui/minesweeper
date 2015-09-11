@@ -9,22 +9,30 @@ log = logging.getLogger(__name__)
 BOARD_WIDTH=8
 BOARD_HEIGHT=8
 MINE_COUNT=10
-
-board = Board(BOARD_WIDTH, BOARD_HEIGHT, MINE_COUNT)
+boards = {}
 
 @view_config(route_name='home', renderer='templates/index.pt')
-def MainPage(request):
-	return {'BOARD_WIDTH': BOARD_WIDTH, 'BOARD_HEIGHT': BOARD_HEIGHT, 'MINES':MINE_COUNT}
+def Home(request):
+	return {}
+
+@view_config(route_name='play', renderer='templates/play.pt')
+def Play(request):
+	if not (request.matchdict["room"] in boards.keys()):
+		boards[request.matchdict["room"]] = Board(BOARD_WIDTH, BOARD_HEIGHT, MINE_COUNT)
+	return {'BOARD_WIDTH': BOARD_WIDTH, 'BOARD_HEIGHT': BOARD_HEIGHT, 'MINES':MINE_COUNT, 'ROOM':request.matchdict["room"]}
 
 @view_config(route_name='userInput', renderer='json')
 def Respond(request):
+	if not (request.matchdict["room"] in boards.keys()):
+		return
 	if request.json_body['type'] == 2:#reset
-		board.__init__(BOARD_WIDTH,BOARD_HEIGHT,MINE_COUNT)
+		boards[request.matchdict["room"]].__init__(BOARD_WIDTH,BOARD_HEIGHT,MINE_COUNT)
 		return {'message': 'restart'}
 	else:#type 0/1 is left/rightclick
-		return {'message': board.input(request.json_body['x'],request.json_body['y'],request.json_body['type'])}
+		return {'message': boards[request.matchdict["room"]].input(request.json_body['x'],request.json_body['y'],request.json_body['type'])}
 
 @view_config(route_name='polling', renderer='json')
 def Poll(request):
-	return {'message': board.findDifference(request.json_body['compact'])}
-	pass
+	if not (request.matchdict["room"] in boards.keys()):
+		return
+	return {'message': boards[request.matchdict["room"]].findDifference(request.json_body['compact'])}

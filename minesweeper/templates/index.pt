@@ -3,22 +3,29 @@
   <head>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <script type="text/javascript" src="${request.static_url('minesweeper:static/minesweeper.js')}"></script>
     <link rel="stylesheet" href="${request.static_url('minesweeper:static/minesweeper.css')}">
     <link href='https://fonts.googleapis.com/css?family=Roboto:700' rel='stylesheet' type='text/css'>
     <script>
-      var MINES = ${MINES}, BOARD_WIDTH = ${BOARD_WIDTH}, BOARD_HEIGHT = ${BOARD_HEIGHT}
-    </script>
+    	$(document).ready(function(){
+    		$("#room").val("test");
+    		$("#joinRoom").submit(function(event){
+    			window.location.replace("/"+$("#room").val());
+    			event.preventDefault();
+    		});
+    		$("html").css("cursor: url('http://www.i2symbol.com/images/symbols/geometry/black_circle_u25CF_icon_128x128.png'), pointer");
+    	});
+    	setInterval(function(){
+    		$(".fa").toggleClass("red");
+    	},1000);
+	</script>
   </head>
+
   <body>
-    <h1>Minesweeper</h1>
-    <h4>${MINES} mines</h4>
-    <table class = "minesweeper">       
-      <tr tal:repeat="row range(BOARD_WIDTH)">        
-        <td tal:repeat="col range(BOARD_HEIGHT)" tal:attributes="data-x row; data-y col"></td>       
-      </tr>
-    </table>
-    <button class="restart" id="restart">Restart Game</button>
+    <h1><i class="fa fa-bomb"></i>Minesweeper<i class="fa fa-bomb"></i></h1>
+    <form id = "joinRoom">
+    	<input required type="text" id="room" maxlength="10" style="text-align:center;width:100px"></input><br><br>
+    	<input class="restart" type="submit" value="Join Room"></input>
+	</form>
   </body>
 
 </html>

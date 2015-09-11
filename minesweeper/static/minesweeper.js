@@ -146,7 +146,7 @@ $(document).ready(function(){
 	*/
 	function poll(){
 		jQuery.ajax({
-			url     : 'polling',
+			url     : ROOM+'/polling',
 			type    : 'POST',
 			data: JSON.stringify({'compact': compactify()}),
 			contentType: 'application/json; charset=utf-8',
@@ -185,7 +185,7 @@ $(document).ready(function(){
 	*/
 	function ajax_request(x,y,type){//type 0 = click, 1 = flag, 2 = restartgame
 		jQuery.ajax({
-			url     : 'play',
+			url     : ROOM+'/play',
 			type    : 'POST',
 			data: JSON.stringify({'x': x, 'y': y, 'type':type}),
 			contentType: 'application/json; charset=utf-8',
