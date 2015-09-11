@@ -2,7 +2,9 @@ Minesweeper
 
 -Multiplayer
 
--Seperate Rooms
+-Seperate Rooms:
+
+[Video demo (sorry, screen capture didn't capture the cursor)](http://streamable.com/mlsu)
 
 
 `git clone`
