@@ -27,7 +27,3 @@ jyenv/
 pypyenv/
 env*/
 venv/
-requirements.txt
-run
-runapp.py
-Procfile
