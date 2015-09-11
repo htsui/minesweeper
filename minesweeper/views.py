@@ -4,9 +4,12 @@ import logging
 import json
 
 log = logging.getLogger(__name__)
-BOARD_WIDTH=5
-BOARD_HEIGHT=5
-MINE_COUNT=5
+
+#Board generation logic breaks if MINE_COUNT >= HEIGHT*WIDTH
+BOARD_WIDTH=8
+BOARD_HEIGHT=8
+MINE_COUNT=10
+
 board = Board(BOARD_WIDTH, BOARD_HEIGHT, MINE_COUNT)
 
 @view_config(route_name='home', renderer='templates/index.pt')

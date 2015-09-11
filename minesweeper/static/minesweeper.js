@@ -7,11 +7,9 @@ $(document).ready(function(){
 	var revealed = 0;
 	var elems = []
 	
-
 	init()
 	start()
 	poll()
-
 	/*
 		Click Listeners
 	*/
@@ -75,6 +73,7 @@ $(document).ready(function(){
 	    var y = square.coords[1]
 
 	    /*Conditions that signify a restart occured*/
+	    /*Maybe I should have tried to figure out websockets instead...*/
 	    if ((square.isFlag && (isVisibleNumber(x,y) || isVisibleMine(x,y)))
 	    	|| (!square.isVisible && !square.isFlag && (isVisibleNumber(x,y) || isVisibleMine(x,y)))
 	    	|| (square.isVisible && !square.isMine && isVisibleMine(x,y))
@@ -88,7 +87,8 @@ $(document).ready(function(){
 	    		} else if (square.isMine){
 	    			showMine(x,y)
 	    		} else if (square.isVisible){
-	    			showNumber(x,y,square.touchingMines)
+	    			if (!isVisibleNumber(x,y))
+	    				showNumber(x,y,square.touchingMines)
 	    		} else {
 	    			hideFlag(x,y)
 	    		}
@@ -124,6 +124,7 @@ $(document).ready(function(){
 			console.log(MINES)
 			alert(WIN_MESSAGE);
 		}
+		console.log(revealed)
 	}
 	function showFlag(x,y){
 		elems[x][y].attr("class","flag");
@@ -152,9 +153,16 @@ $(document).ready(function(){
 			success : function(data){
 				processAjax(data);
 				setTimeout(poll,POLLING_RATE);
+			},
+			error : function(){
+				console.log("Connection Error... trying again");
+				setTimeout(poll,POLLING_RATE);
 			}
 		});
 	}
+
+	/*Create a string representing the grid to save bandwidth on polling*/
+	/*For more efficiency, store in binary!  4bits/square is enough, 0-8 and F,M,N is < 2^4 possibilities*/
 	function compactify(){
 		var str = "";
 		for (var i = 0; i < BOARD_WIDTH; i++){

@@ -1,26 +1,54 @@
-td {
+table.minesweeper {
+  margin-left: auto;
+  margin-right: auto;
+}
+table.minesweeper td {
   z-index:2;
   float:left;
-  margin-left:2px;
-  background-color: #706080;
+  margin-left:1px;
+  margin-right:1px;
+  background-color: #5212a6;
   cursor:pointer;
   color: #FFFFFF;
   width:20px;
   height:20px;
-  font-family: FontAwesome;
   display:block;
   text-align:center;
+  transition: all 0.25s;
 }
-td:hover {
-  background-color: #303335;
+table.minesweeper td:hover {
+  background-color: #D0C0E0;
+  transition: all 0.1s;
 }
-td.flag:before {
+table.minesweeper td.flag:before {
+  font-family: FontAwesome;
   content: "\f024";
 }
-td.mine:before {
+table.minesweeper td.mine:before {
+  font-family: FontAwesome;
   content: "\f1e2";
 }
-td.revealed {
+table.minesweeper td.revealed {
   pointer-events: none;
   background-color: #C0B0D0;
+}
+body{
+  background-color: #C9C9C9;
+  text-align:center;
+  font-family: 'Roboto', sans-serif;
+}
+
+button.restart{
+  color: #6496c8;
+  border-radius:2px;
+  background: rgba(0,0,0,0);
+  border: solid 5px #6496c8;
+}
+button.restart:hover{
+  border-color: #346392;
+  color: #346392;
+}
+button.restart:active{
+  border-color: #27496d;
+  color: #27496d;
 }

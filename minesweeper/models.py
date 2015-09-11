@@ -44,12 +44,12 @@ class Board:
 				self.gameOver()
 			else:
 				self.revealedCount += 1
-
 				#if current square is 0, reveal all surrounding squares
 				if self.board[x][y]['touchingMines'] == 0:
 					for sq in self.listOfTouchers(x,y):
 						self.reveal(sq['coords'][0],sq['coords'][1],ret)
-			
+		
+		#win condition
 		if self.revealedCount == self.x*self.y-self.bombCount:
 			self.gameOver()
 		
@@ -115,7 +115,6 @@ class Board:
 			for j in range(y-1,y+2):
 				if (i >= 0 and i <xSize and j >=0 and j <ySize and not(i==x and j==y)):
 					ret.append((i,j))
-
 		return ret
 
 	def listOfTouchers(self,x,y):
