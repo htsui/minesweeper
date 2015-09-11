@@ -1,7 +1,8 @@
 Minesweeper
 
-*Multiplayer
-*Seperate Rooms
+* Multiplayer
+* Seperate Rooms
+* First click will never be bomb
 
 [Video demo (sorry, screen capture didn't capture the cursor)](http://streamable.com/mlsu)
 
