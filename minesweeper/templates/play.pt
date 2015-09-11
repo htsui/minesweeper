@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="${request.locale_name}">
   <head>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <script type="text/javascript" src="${request.static_url('minesweeper:static/minesweeper.js')}"></script>
     <link rel="stylesheet" href="${request.static_url('minesweeper:static/minesweeper.css')}">
-    <link href='https://fonts.googleapis.com/css?family=Roboto:700' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Roboto:700' rel='stylesheet' type='text/css'>
     <script>
       var MINES = ${MINES}, BOARD_WIDTH = ${BOARD_WIDTH}, BOARD_HEIGHT = ${BOARD_HEIGHT}, ROOM = '${ROOM}'
     </script>
