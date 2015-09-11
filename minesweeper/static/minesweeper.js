@@ -74,6 +74,7 @@ $(document).ready(function(){
 
 	    /*Conditions that signify a restart occured*/
 	    /*Maybe I should have tried to figure out websockets instead...*/
+	    /*Or kept a game id in the ajax*/
 	    if ((square.isFlag && (isVisibleNumber(x,y) || isVisibleMine(x,y)))
 	    	|| (!square.isVisible && !square.isFlag && (isVisibleNumber(x,y) || isVisibleMine(x,y)))
 	    	|| (square.isVisible && !square.isMine && isVisibleMine(x,y))
@@ -95,7 +96,7 @@ $(document).ready(function(){
 	    	}
 	}
 	/*
-		Helper functions for board update
+		Helper functions for update square
 	*/
 	function isFlag(x,y){
 		return elems[x][y].hasClass("flag")
@@ -114,17 +115,12 @@ $(document).ready(function(){
 		alert(LOSE_MESSAGE);
 	}
 	function showNumber(x,y,numberOfMines){
-		console.log(x+","+y)
 		elems[x][y].html(numberOfMines == 0 ? " " : numberOfMines);
 		elems[x][y].attr("class","revealed");
 		revealed++;
 		if (revealed == BOARD_WIDTH*BOARD_HEIGHT - MINES){
-			console.log(revealed)
-			console.log(BOARD_HEIGHT*BOARD_WIDTH)
-			console.log(MINES)
 			alert(WIN_MESSAGE);
 		}
-		console.log(revealed)
 	}
 	function showFlag(x,y){
 		elems[x][y].attr("class","flag");
@@ -177,7 +173,6 @@ $(document).ready(function(){
 					str += "N"//None
 			}
 		}
-		console.log(str);
 		return str;
 	}
 	/*

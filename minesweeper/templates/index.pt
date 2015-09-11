@@ -7,7 +7,7 @@
     <link href='//fonts.googleapis.com/css?family=Roboto:700' rel='stylesheet' type='text/css'>
     <script>
     	$(document).ready(function(){
-    		$("#room").val("test");
+    		$("#room").val("room");
     		$("#joinRoom").submit(function(event){
     			window.location.replace("/"+$("#room").val());
     			event.preventDefault();

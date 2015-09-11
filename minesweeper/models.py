@@ -1,6 +1,5 @@
 import random
-import logging
-log = logging.getLogger(__name__)
+
 class Board:
 	def __init__(self,x,y,bombs):
 		self.board = []
@@ -143,6 +142,7 @@ class Board:
 						ret.append(self.board[i][j])
 		return ret
 	
+	#Same as function on javascript side
 	def compactify(self):
 		ret = ""
 		for i in range(len(self.board)):
@@ -164,5 +164,4 @@ def falsifyMineData(square):
 		sq = dict(square)
 		sq['isMine'] = False;
 		sq['touchingMines'] = 0; 
-		log.debug(sq)
 		return sq
